@@ -4,8 +4,15 @@
 function setLength() {
   var passLength = prompt("How long would you like your password to be? (8-128 characters)")
   passLength = parseInt(passLength);
- 
-  return passLength;
+  
+  if (passLength > 7 && passLength < 129) {
+    return passLength;
+  }
+  
+  else {
+    alert("Invalid option! Please choose a number between 8 and 128")
+    setLength()
+  }
 }
 
 // Confirm lowercase
@@ -49,6 +56,14 @@ function generatePassword() {
   var chars = [];
   var password = [];
 
+  while (!lowerCase && !upperCase && !numeric && !special) {
+    alert("You need to choose at least one type of character for your password.");
+    var lowerCase = setLowerCase();
+    var upperCase = setUpperCase();
+    var numeric = setNumeric();
+    var special = setSpecial();
+  }
+
   if (lowerCase) {
     chars.push("a","b","c","e","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
   }
@@ -65,9 +80,9 @@ function generatePassword() {
     chars.push("!","@","#","$","%","^","&","*","(",")",);
   }
 
-  console.log(passLength, lowerCase, upperCase, numeric, special)
-  console.log(chars)
-  console.log(chars.length)
+  // console.log(passLength, lowerCase, upperCase, numeric, special)
+  // console.log(chars)
+  // console.log(chars.length)
 
   for (var i = 0; i <passLength; i++) {
     var randomNumber = Math.floor(Math.random() * chars.length);
