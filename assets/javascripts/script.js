@@ -46,8 +46,37 @@ function generatePassword() {
   var numeric = setNumeric();
   var special = setSpecial();
 
-  console.log(passLength, lowerCase, upperCase, numeric, special)
+  var chars = [];
+  var password = [];
 
+  if (lowerCase) {
+    chars.push("a","b","c","e","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
+  }
+
+  if (upperCase) {
+    chars.push("A","b","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+  }
+
+  if (numeric) {
+    chars.push("1","2","3","4","5","6","7","8","9","0");
+  }
+
+  if (special) {
+    chars.push("!","@","#","$","%","^","&","*","(",")",);
+  }
+
+  console.log(passLength, lowerCase, upperCase, numeric, special)
+  console.log(chars)
+  console.log(chars.length)
+
+  for (var i = 0; i <passLength; i++) {
+    var randomNumber = Math.floor(Math.random() * chars.length);
+    var newchar = chars[randomNumber];
+    password += newchar;
+    // console.log(randomNumber)
+  }
+
+  return password;
 }
 
 // Get references to the #generate element
