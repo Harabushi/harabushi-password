@@ -1,4 +1,16 @@
 // Assignment code here
+var chars = [];
+var randomNum = function (min, max){
+  var a = Math.floor(Math.random() * (max - min +1) + min)
+  return a;
+}
+
+var letterL = String.fromCharCode(randomNum(0x61, 0x7a))
+var letterU = String.fromCharCode(randomNum(0x41, 0x5a))
+var number = String.fromCharCode(randomNum(0x30, 0x39))
+var special = String.fromCharCode(randomNum(0x21, 0x2f))
+
+console.log(letterL, letterU, number, special)
 
 // Confirm password length
 function setLength() {
@@ -18,70 +30,83 @@ function setLength() {
 // Confirm lowercase
 function setLowerCase() {
   var lowerCase = confirm("Do you want lowercase characters in your password? Ok for Yes, Cancel for No.")
-
-  return lowerCase;
+  if (lowerCase) {
+    chars.push("1");
+  }
+  //return lowerCase;
 }
 
 // Confirm uppercase
 function setUpperCase() {
   var upperCase = confirm("Do you want uppercase characters in your password? Ok for Yes, Cancel for No.")
-
-  return upperCase;
+  if (upperCase) {
+    chars.push("2");
+  }
+  //return upperCase;
 }
 
 // Confirm numeric
 function setNumeric() {
   var numeric = confirm("Do you want numeric characters in your password? Ok for Yes, Cancel for No.")
-
-  return numeric;
+  if (numeric) {
+    chars.push("3");
+  }
+  //return numeric;
 }
 
 // Confirm special
 function setSpecial() {
   var special = confirm("Do you want special characters in your password? Ok for Yes, Cancel for No.")
-  
-  return special;
+  if (special) {
+    chars.push("4");
+  }
+  //return special;
 }
-
-// Confirm at least one type selected
 
 // Generate password
 function generatePassword() {
-  var passLength = setLength();
-  var lowerCase = setLowerCase();
-  var upperCase = setUpperCase();
-  var numeric = setNumeric();
-  var special = setSpecial();
-
-  var chars = [];
   var password = [];
+  passLength = setLength();
+  //var lowerCase = 
+  setLowerCase();
+  //var upperCase = 
+  setUpperCase();
+  //var numeric = 
+  setNumeric();
+  //var special = 
+  setSpecial();
 
-  while (!lowerCase && !upperCase && !numeric && !special) {
+  // Confirm at least one type selected
+  while (chars.length === 0) {
     alert("You need to choose at least one type of character for your password.");
-    var lowerCase = setLowerCase();
-    var upperCase = setUpperCase();
-    var numeric = setNumeric();
-    var special = setSpecial();
+    //var lowerCase = 
+    setLowerCase();
+    //var upperCase = 
+    setUpperCase();
+    //var numeric = 
+    setNumeric();
+    //var special = 
+    setSpecial();
   }
 
-  if (lowerCase) {
-    chars.push("a","b","c","e","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
-  }
+  // if (lowerCase) {
+  //   chars.push("a","b","c","e","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
+  // }
 
-  if (upperCase) {
-    chars.push("A","b","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
-  }
+  // if (upperCase) {
+  //   chars.push("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
+  // }
 
-  if (numeric) {
-    chars.push("1","2","3","4","5","6","7","8","9","0");
-  }
+  // if (numeric) {
+  //   chars.push("1","2","3","4","5","6","7","8","9","0");
+  // }
 
-  if (special) {
-    chars.push("!","@","#","$","%","^","&","*","(",")",);
-  }
+  // if (special) {
+  //   chars.push("!","@","#","$","%","^","&","*","(",")");
+  // }
 
   // console.log(passLength, lowerCase, upperCase, numeric, special)
-  // console.log(chars)
+  console.log(chars)
   // console.log(chars.length)
 
   for (var i = 0; i <passLength; i++) {
