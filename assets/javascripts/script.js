@@ -4,16 +4,9 @@ var randomNum = function (min, max){
   return a;
 }
 
-//var letterL = String.fromCharCode(randomNum(0x61, 0x7a))
-//var letterU = String.fromCharCode(randomNum(0x41, 0x5a))
-//var number = String.fromCharCode(randomNum(0x30, 0x39))
-//var special = String.fromCharCode(randomNum(0x21, 0x2f))
-
-//console.log(letterL, letterU, number, special)
-
-// Confirm password length
+// user select password length
 function setLength() {
-  debugger;
+  // debugger;
   var passLength = prompt("How long would you like your password to be? (8-128 characters)")
   passLength = parseInt(passLength);
   
@@ -21,16 +14,17 @@ function setLength() {
     alert("Great choice!")  
   }
   
+  // confirm valid number
   else {
     alert("Invalid option! Please choose a number between 8 and 128")
     var passLength = setLength()
   }
 
-  console.log(passLength)
+  // console.log(passLength)
   return passLength;
 }
 
-// User select char types
+// user select char types
 function setCharTypes() {
   chars = [];
 
@@ -54,13 +48,14 @@ function setCharTypes() {
     chars.push("S");
   }
 
-    // Confirm at least one type selected
+    // confirm at least one type selected
     while (chars.length === 0) {
       alert("You need to choose at least one type of character for your password.");
       setCharTypes()
     }
 }
 
+// random character functions
 function lC () {
   var newchar = String.fromCharCode(randomNum(0x61, 0x7a))
   return newchar;
@@ -89,15 +84,16 @@ function generatePassword() {
 
 
   // console.log(passLength, lowerCase, upperCase, numeric, special)
-  console.log(chars)
+  // console.log(chars)
   // console.log(chars.length)
 
+  // password iteration
   for (var i = 0; i <passLength; i++) {
-    var randomNumber = Math.floor(Math.random() * chars.length);
-    var selector = chars[randomNumber];
-    var newchar = eval(selector+"()")
+    var selector = Math.floor(Math.random() * chars.length);
+    var chaType = chars[selector];
+    var newchar = eval(chaType+"()")
     password += newchar;
-    // console.log(randomNumber)
+    // console.log(selector)
   }
 
   return password;

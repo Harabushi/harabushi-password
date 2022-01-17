@@ -1,4 +1,10 @@
-# Password Generator Starter Code
+# Password Generator
+This is Harabushi's super awesome password generator. Come with password needs, leave with great passwords!
+
+### Deployed at: https://harabushi.github.io/harabushi-password/
+### Repository at: https://github.com/Harabushi/harabushi-password
+
+![screen shot of site](./assets/images/password-generator-screenshot.png)
 
 <br />
 
