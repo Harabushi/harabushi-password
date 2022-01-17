@@ -4,26 +4,30 @@ var randomNum = function (min, max){
   return a;
 }
 
-var letterL = String.fromCharCode(randomNum(0x61, 0x7a))
-var letterU = String.fromCharCode(randomNum(0x41, 0x5a))
-var number = String.fromCharCode(randomNum(0x30, 0x39))
-var special = String.fromCharCode(randomNum(0x21, 0x2f))
+//var letterL = String.fromCharCode(randomNum(0x61, 0x7a))
+//var letterU = String.fromCharCode(randomNum(0x41, 0x5a))
+//var number = String.fromCharCode(randomNum(0x30, 0x39))
+//var special = String.fromCharCode(randomNum(0x21, 0x2f))
 
-console.log(letterL, letterU, number, special)
+//console.log(letterL, letterU, number, special)
 
 // Confirm password length
 function setLength() {
+  debugger;
   var passLength = prompt("How long would you like your password to be? (8-128 characters)")
   passLength = parseInt(passLength);
   
   if (passLength > 7 && passLength < 129) {
-    return passLength;
+    alert("Great choice!")  
   }
   
   else {
     alert("Invalid option! Please choose a number between 8 and 128")
-    setLength()
+    var passLength = setLength()
   }
+
+  console.log(passLength)
+  return passLength;
 }
 
 // User select char types
@@ -80,8 +84,8 @@ function S () {
 // Generate password
 function generatePassword() {
   var password = [];
-  passLength = setLength();
-  setCharTypes()
+  var passLength = setLength();
+  setCharTypes();
 
 
   // console.log(passLength, lowerCase, upperCase, numeric, special)
