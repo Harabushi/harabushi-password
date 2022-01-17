@@ -1,5 +1,4 @@
 // Assignment code here
-var chars = [];
 var randomNum = function (min, max){
   var a = Math.floor(Math.random() * (max - min +1) + min)
   return a;
@@ -27,83 +26,63 @@ function setLength() {
   }
 }
 
-// Confirm lowercase
-function setLowerCase() {
+// User select char types
+function setCharTypes() {
+  chars = [];
+
   var lowerCase = confirm("Do you want lowercase characters in your password? Ok for Yes, Cancel for No.")
   if (lowerCase) {
-    chars.push("1");
+    chars.push("lC");
   }
-  //return lowerCase;
-}
 
-// Confirm uppercase
-function setUpperCase() {
   var upperCase = confirm("Do you want uppercase characters in your password? Ok for Yes, Cancel for No.")
   if (upperCase) {
-    chars.push("2");
+    chars.push("uC");
   }
-  //return upperCase;
-}
 
-// Confirm numeric
-function setNumeric() {
   var numeric = confirm("Do you want numeric characters in your password? Ok for Yes, Cancel for No.")
   if (numeric) {
-    chars.push("3");
+    chars.push("N");
   }
-  //return numeric;
-}
 
-// Confirm special
-function setSpecial() {
   var special = confirm("Do you want special characters in your password? Ok for Yes, Cancel for No.")
   if (special) {
-    chars.push("4");
+    chars.push("S");
   }
-  //return special;
+
+    // Confirm at least one type selected
+    while (chars.length === 0) {
+      alert("You need to choose at least one type of character for your password.");
+      setCharTypes()
+    }
+}
+
+function lC () {
+  var newchar = String.fromCharCode(randomNum(0x61, 0x7a))
+  return newchar;
+}
+
+function uC () {
+  var newchar = String.fromCharCode(randomNum(0x41, 0x5a))
+  return newchar;
+}
+
+function N () {
+  var newchar = String.fromCharCode(randomNum(0x30, 0x39))
+  return newchar;
+}
+
+function S () {
+  var newchar = String.fromCharCode(randomNum(0x21, 0x2f))
+  return newchar;
 }
 
 // Generate password
 function generatePassword() {
   var password = [];
   passLength = setLength();
-  //var lowerCase = 
-  setLowerCase();
-  //var upperCase = 
-  setUpperCase();
-  //var numeric = 
-  setNumeric();
-  //var special = 
-  setSpecial();
+  setCharTypes()
 
-  // Confirm at least one type selected
-  while (chars.length === 0) {
-    alert("You need to choose at least one type of character for your password.");
-    //var lowerCase = 
-    setLowerCase();
-    //var upperCase = 
-    setUpperCase();
-    //var numeric = 
-    setNumeric();
-    //var special = 
-    setSpecial();
-  }
-
-  // if (lowerCase) {
-  //   chars.push("a","b","c","e","d","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z");
-  // }
-
-  // if (upperCase) {
-  //   chars.push("A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z");
-  // }
-
-  // if (numeric) {
-  //   chars.push("1","2","3","4","5","6","7","8","9","0");
-  // }
-
-  // if (special) {
-  //   chars.push("!","@","#","$","%","^","&","*","(",")");
-  // }
 
   // console.log(passLength, lowerCase, upperCase, numeric, special)
   console.log(chars)
@@ -111,7 +90,8 @@ function generatePassword() {
 
   for (var i = 0; i <passLength; i++) {
     var randomNumber = Math.floor(Math.random() * chars.length);
-    var newchar = chars[randomNumber];
+    var selector = chars[randomNumber];
+    var newchar = eval(selector+"()")
     password += newchar;
     // console.log(randomNumber)
   }
@@ -128,7 +108,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 
 // Add event listener to generate button
